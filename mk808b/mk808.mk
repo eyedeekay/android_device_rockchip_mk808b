@@ -2,7 +2,7 @@
 # include common makefile
 $(call inherit-product, device/rockchip/rk3066-common/common.mk)
 
-LOCAL_PATH := device/rockchip/mk808bb
+LOCAL_PATH := device/rockchip/mk808b
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -33,7 +33,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.default.size=100 \
     persist.ro.hardware=rk30board \
     ro.product.manufacturer=Rockchip \
-    ro.product.model=mk808bb
+    ro.product.model=mk808b
 #    ro.sf.fakerotation=true
 #    ro.sf.hwrotation=270
 
@@ -42,4 +42,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.debuggable=1
 
-$(call inherit-product-if-exists, vendor/rockchip/mk808bb/mk808bb-vendor.mk)
+$(call inherit-product-if-exists, vendor/rockchip/mk808b/mk808b-vendor.mk)
