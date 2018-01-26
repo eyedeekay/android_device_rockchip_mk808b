@@ -22,7 +22,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($TARGET_DEVICE),lineage_mk808b)
+ifeq ($TARGET_DEVICE),mk808b)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

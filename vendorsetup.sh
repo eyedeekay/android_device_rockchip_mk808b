@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo lineage_mk808b-userdebug
+add_lunch_combo mk808b-userdebug
