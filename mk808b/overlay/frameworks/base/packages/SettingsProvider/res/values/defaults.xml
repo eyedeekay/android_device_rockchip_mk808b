@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright (c) 2009, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources>
+    <bool name="def_dim_screen">true</bool>
+    <integer name="def_screen_off_timeout">-1</integer>
+    <bool name="def_accelerometer_rotation">false</bool>
+    <bool name="def_haptic_feedback">false</bool>
+
+    <bool name="def_bluetooth_on">false</bool>
+    <bool name="def_install_non_market_apps">true</bool>
+    <bool name="def_netstats_enabled">false</bool>
+    <bool name="def_usb_mass_storage_enabled">true</bool>
+    <bool name="def_wifi_on">false</bool>
+    <!-- 0 == default, 1 == never while plugged, 2 == never -->
+    <integer name="def_wifi_sleep_policy">2</integer>
+
+    <!-- Default for Settings.System.USER_ROTATION -->
+    <integer name="def_user_rotation">0</integer>
+
+    <!-- Default for UI touch sounds enabled -->
+    <bool name="def_sound_effects_enabled">false</bool>
+
+    <!-- Development settings -->
+    <bool name="def_stay_on_while_plugged_in">true</bool>
+
+    <!-- Number of retries for connecting to DHCP.
+         Value here is the same as WifiStateMachine.DEFAULT_MAX_DHCP_RETRIES -->
+    <integer name="def_max_dhcp_retries">9</integer>
+</resources>

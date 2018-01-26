@@ -1,0 +1,5 @@
+# rk3066 fstab (possible to check system partition?)
+/dev/block/mtdblock7        /system     ext4    ro,noatime,nodiratime,noauto_da_alloc                   wait
+/dev/block/mtdblock5        /cache      ext4    noatime,nodiratime,nosuid,nodev,noauto_da_alloc,nodev   wait,check
+/dev/block/mtdblock8        /data       ext4    noatime,nodiratime,nosuid,nodev,noauto_da_alloc,nodev   wait,check
+

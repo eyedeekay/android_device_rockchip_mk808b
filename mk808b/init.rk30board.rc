@@ -1,0 +1,241 @@
+
+import init.rk30board.usb.rc
+
+on early-init
+    export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
+    export THIRD_VOLUME_STORAGE /storage/usbdisk0
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    mkdir /storage/sdcard1 0775 system system
+    mkdir /storage/usbdisk0 0775 system system
+
+    # for backwards compatibility
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard1 /mnt/external_sd
+    symlink /storage/sdcard1 /external_sd
+    symlink /storage/usbdisk0 /usbdisk
+    symlink /storage/usbdisk0 /mnt/usbdisk
+
+on init
+    insmod /rk30xxnand_ko.ko.3.0.8+
+
+on fs
+    mount_all /fstab.rk30board
+
+on post-fs-data
+    # we will remap this as /storage/sdcard0 with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
+    mkdir /data/misc/ppp 777 system system
+    chmod 777 /data/misc/ppp
+    copy /etc/ppp/pap-secrets /data/misc/ppp/pap-secrets
+    copy /etc/ppp/pppoe.conf /data/misc/ppp/pppoe.conf
+
+    insmod /system/lib/modules/ump.ko
+    insmod /system/lib/modules/mali.ko mali_dvfs=50,100,133,160,200,266,400 mali_init_clock=50
+    insmod /system/lib/modules/rk29-ipp.ko
+    insmod /system/lib/modules/vpu_service.ko
+#    insmod /system/lib/modules/virtual_keyboard.ko
+
+    setprop vold.post_fs_data_done 1
+
+on init
+    symlink /etc/bluez/bcm432x/BCM4329B1_TestOnly_0237_26MHz_SEMCO_B23.hcd /bcm4329_samsung.hcd
+    symlink /etc/bluez/bcm432x/BCM4329B1_USI_WM-BN-BM-01.hcd /bcm4329_usi.hcd
+    symlink /etc/bluez/bcm432x/BCM4329B1_002.002.023.0389.0000_Cybertan-Foxconn_Cls2_extLNA_EDRmaxInputLev+PeakDEVM_NT.hcd /bcm4329_cybertan.hcd
+
+on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    chown system system /sys/devices/system/cpu/cpu1/online
+    chmod 0660 /sys/devices/system/cpu/cpu1/online
+
+    setprop UserVolumeLabel "RockChips"
+    setprop ro.radio.noril yes
+    setprop wifi.interface wlan0
+    setprop ro.build.product mk808bb
+    setprop ro.product.device mk808bb
+
+    # fake some battery state
+    setprop status.battery.level 90
+
+# Hdmi
+    chown root system /sys/class/display/HDMI/enable
+    chown root system /sys/class/display/HDMI/mode
+    chown root system /sys/class/display/HDMI/scale
+    
+# WiFi
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets/tmp 0440 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
+# bluetooth power up/down interface
+    chmod 0660 /dev/ttyS0
+    chmod 0660 /dev/ttyS2
+    chmod 0660 /dev/vflash
+    chown bluetooth bluetooth /dev/vflash
+    chown bluetooth bluetooth /dev/ttyS2
+    chown bluetooth bluetooth /dev/ttyS0
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chmod 0664 /sys/class/rfkill/rfkill0/state
+
+    chown system system /sys/mali400_utility/utility
+    chmod 0664 /sys/mali400_utility/utility 
+
+# for usb audio
+    chmod 0664 /sys/class/switch/usb_audio_playback/state
+    chmod 0664 /sys/class/switch/usb_audio_capture/state
+    chown system system /sys/class/switch/usb_audio_playback/state
+    chown system system /sys/class/switch/usb_audio_capture/state
+
+# ethernet
+    chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
+    chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
+    chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
+    
+# create virtual SD card at /storage/sdcard0, based on the /data/media directory
+# daemon will drop to user/group system/media_rw after initializing
+# underlying files in /data/media will be created with user and group media_rw (1023)
+service sdcard /system/bin/sdcard /data/media 1023 1023
+    class late_start
+
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs \
+        mtdblock5 \
+        mtdblock8
+    class core
+    user root
+    group root
+    oneshot
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -Dwext -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    #-Dwnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    #-Dnl80211 -iwlan0 -puse_p2p_group_interface=1 -e/data/misc/wifi/entropy.bin
+    #   we will start as root and wpa_supplicant will switch to user wifi
+    #   after setting up the capabilities required for WEXT
+    #   user wifi
+    #   group wifi inet keystore
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+#add for wifi direct (gwl)
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -Dnl80211 -iwlan0 -puse_p2p_group_interface=1 -e/data/misc/wifi/entropy.bin
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service rtl_supplicant /system/bin/wpa_supplicant \
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    socket wpa_wlan0 dgram 660 wifi wifi
+    group wifi inet
+    disabled
+    oneshot
+
+service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
+    class main
+    disabled
+    oneshot
+
+service displayd /system/bin/displayd
+    class main
+    socket displayd stream 0660 root system
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_wlan0 system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_p2p system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+# bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/bugreport.sh
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
+
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+			
+service iprenew_eth0 system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+#service battery_charger /charger
+#    class charger
+
+#service akmd /system/bin/akmd8975
+#        class main
+#        user system
+#        group system
+#        oneshot
+
+on property:sys.gmali.performance=ui
+    start pat_ui
+
+service pat_ui /system/bin/performance ui
+    disabled
+    oneshot
+
+on property:sys.gmali.performance=video
+    start pat_video
+
+on property:persist.sys.usb.otg=slave
+    write /sys/bus/platform/drivers/usb20_otg/force_usb_mode 2
+on property:persist.sys.usb.otg=master
+    write /sys/bus/platform/drivers/usb20_otg/force_usb_mode 1
+
+# adb over network
+on property:service.adb.tcp.port=5555
+    stop adbd
+    start adbd
+on property:service.adb.tcp.port=-1
+    stop adbd
+    start adbd
+
+service pat_video /system/bin/performance video
+    disabled
+    oneshot
+
+service pppoe_setup /system/bin/pppoe-setup
+    disabled
+    oneshot
+
+service pppoe_start /system/bin/pppoe-start
+    disabled
+    oneshot
+
+service pppoe_stop /system/bin/pppoe-stop
+    disabled
+    oneshot
+
+service cifsmanager /data/etc/cifsmanager.sh
+    disabled
+    oneshot
