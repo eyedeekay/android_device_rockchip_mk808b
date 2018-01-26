@@ -14,7 +14,7 @@ $(call inherit-product, device/rockchip/mk808b/full_mk808b.mk)
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := mk808b
+PRODUCT_DEVICE := lineage_mk808b
 PRODUCT_NAME := lineage_mk808b
 PRODUCT_BRAND := Rockchip
 PRODUCT_MODEL := MK808B
