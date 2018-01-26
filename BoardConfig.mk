@@ -6,7 +6,7 @@
 
 USE_CAMERA_STUB := false
 
-PRODUCT_MODEL := Rockchip MK808
+PRODUCT_MODEL := Rockchip MK808B
 PRODUCT_MANUFACTURER := Rockchip
 
 # Kernel

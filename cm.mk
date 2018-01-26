@@ -1,5 +1,5 @@
 # Release name
-PRODUCT_RELEASE_NAME := MK808
+PRODUCT_RELEASE_NAME := MK808B
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
@@ -15,7 +15,7 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := mk808b
-PRODUCT_NAME := cm_mk808b
+PRODUCT_NAME := lineage_mk808b
 PRODUCT_BRAND := Rockchip
-PRODUCT_MODEL := MK808
+PRODUCT_MODEL := MK808B
 PRODUCT_MANUFACTURER := Rockchip
