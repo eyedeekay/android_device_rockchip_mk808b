@@ -2,14 +2,12 @@
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 
--include device/rockchip/rk3066-common/BoardCommonConfig.mk
+include device/rockchip/rk3066-common/BoardCommonConfig.mk
 
 USE_CAMERA_STUB := false
 
 PRODUCT_MODEL := Rockchip MK808B
 PRODUCT_MANUFACTURER := Rockchip
-TARGET_DEVICE := mk808b
-TARGET_NAME := mk808b
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
