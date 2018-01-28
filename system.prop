@@ -6,5 +6,5 @@ ro.rk.install_non_market_apps=true
 ro.rk.MassStorage=true
 ro.rk.screenoff_time=-1
 ro.rk.def_brightness=200
-ro.rk.homepage_base=http://www.google.com/webhp?client={CID}&amp;source=android-home
+ro.rk.homepage_base=http://www.duckduckgo.com/lite
 ro.rksdk.version=rk3066 26-09-2012
