@@ -34,11 +34,11 @@ on post-fs-data
     copy /etc/ppp/pap-secrets /data/misc/ppp/pap-secrets
     copy /etc/ppp/pppoe.conf /data/misc/ppp/pppoe.conf
 
-    insmod /system/lib/modules/ump.ko
+#   insmod /system/lib/modules/ump.ko
     insmod /system/lib/modules/mali.ko mali_dvfs=50,100,133,160,200,266,400 mali_init_clock=50
     insmod /system/lib/modules/rk29-ipp.ko
     insmod /system/lib/modules/vpu_service.ko
-#    insmod /system/lib/modules/virtual_keyboard.ko
+#   insmod /system/lib/modules/virtual_keyboard.ko
 
     setprop vold.post_fs_data_done 1
 
@@ -65,7 +65,7 @@ on boot
     chown root system /sys/class/display/HDMI/enable
     chown root system /sys/class/display/HDMI/mode
     chown root system /sys/class/display/HDMI/scale
-    
+
 # WiFi
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
@@ -85,7 +85,7 @@ on boot
     chmod 0664 /sys/class/rfkill/rfkill0/state
 
     chown system system /sys/mali400_utility/utility
-    chmod 0664 /sys/mali400_utility/utility 
+    chmod 0664 /sys/mali400_utility/utility
 
 # for usb audio
     chmod 0664 /sys/class/switch/usb_audio_playback/state
@@ -98,7 +98,7 @@ on boot
     chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
     chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
     chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
-    
+
 # create virtual SD card at /storage/sdcard0, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media will be created with user and group media_rw (1023)
@@ -182,7 +182,7 @@ service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
-			
+
 service iprenew_eth0 system/bin/dhcpcd -n
     class main
     disabled
