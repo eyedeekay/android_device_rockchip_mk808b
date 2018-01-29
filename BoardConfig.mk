@@ -4,7 +4,7 @@
 
 include device/rockchip/rk3066-common/BoardCommonConfig.mk
 
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := true
 
 PRODUCT_MODEL := Rockchip MK808B
 PRODUCT_MANUFACTURER := Rockchip
