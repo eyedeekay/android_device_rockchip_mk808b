@@ -7,8 +7,8 @@ LOCAL_PATH := device/rockchip/mk808b
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-PRODUCT_AAPT_configs := xlarge hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xlarge
+PRODUCT_AAPT_configs := ldpi hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := ldpi
 
 # Init files
 PRODUCT_COPY_FILES += \
