@@ -16,7 +16,8 @@ BOARD_KERNEL_CMDLINE := init=/init initrd=0x62000000,0x00800000 mtdparts=rk29xxn
 TARGET_CPU_VARIANT=cortex-a9
 #TARGET_KERNEL_CONFIG := rk3066_mk808b_defconfig
 #TARGET_KERNEL_CONFIG := lineage_mk808b_defconfig
-TARGET_KERNEL_CONFIG := rockchip_linux_defconfig
+TARGET_KERNEL_CONFIG := rockchip_android_defconfig
+#TARGET_KERNEL_CONFIG := rockchip_linux_defconfig
 
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 419430400
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 536870912
