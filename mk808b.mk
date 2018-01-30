@@ -5,7 +5,7 @@ $(call inherit-product, device/rockchip/rk3066-common/common.mk)
 LOCAL_PATH := device/rockchip/mk808b
 
 # Overlay
-#DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_AAPT_configs := ldpi hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := ldpi
