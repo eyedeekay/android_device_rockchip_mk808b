@@ -1,5 +1,5 @@
 
-#
+# Libraries taken from FinlessROM
 vendor/lib/acoustics.default.so
 vendor/lib/alsa.default.so
 vendor/lib/audio_policy.rk30board.so
@@ -219,7 +219,11 @@ vendor/lib/libz.so
 vendor/lib/registry
 vendor/lib/webkit_ver
 
+# libDRM from FinlessROM
+
 vendor/lib/drm/libfwdlockengine.so
+
+#
 
 vendor/lib/egl/egl.cfg
 vendor/lib/egl/libEGL_mali.so
@@ -228,6 +232,7 @@ vendor/lib/egl/libGLESv1_CM_mali.so
 vendor/lib/egl/libGLESv2_mali.so
 
 # Files found in /etc/firmware
+
 vendor/etc/firmware/athtcmd_ram.bin
 vendor/etc/firmware/athwlan.bin.z77
 vendor/etc/firmware/bdata.SD31.bin
