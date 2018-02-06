@@ -1,7 +1,5 @@
 
 # Libraries taken from FinlessROM
-vendor/lib/acoustics.default.so
-vendor/lib/alsa.default.so
 vendor/lib/audio_policy.rk30board.so
 vendor/lib/audio.primary.rk30board.so
 vendor/lib/crtbegin_so.o
@@ -15,7 +13,6 @@ vendor/lib/libandroid_servers.so
 vendor/lib/libandroid.so
 vendor/lib/libapedec.so
 vendor/lib/libasan_preload.so
-vendor/lib/libasound.so
 vendor/lib/libaudioeffect_jni.so
 vendor/lib/libaudioflinger.so
 vendor/lib/libaudioutils.so
@@ -84,7 +81,6 @@ vendor/lib/libhwui.so
 vendor/lib/libicui18n.so
 vendor/lib/libicuuc.so
 vendor/lib/libinput.so
-vendor/lib/libion.so
 vendor/lib/libiprouteutil.so
 vendor/lib/libjavacore.so
 vendor/lib/libjesancache.so
@@ -94,12 +90,10 @@ vendor/lib/libjnigraphics.so
 vendor/lib/libjni_latinime.so
 vendor/lib/libjni_mosaic.so
 vendor/lib/libjni_pinyinime.so
-vendor/lib/libjpeghwdec.so
-vendor/lib/libjpeghwenc.so
+
 vendor/lib/libjpeg.so
 vendor/lib/libkeystore_client.so
 vendor/lib/liblog.so
-vendor/lib/libMali.so
 vendor/lib/libmdnssd.so
 vendor/lib/libmedia_jni.so
 vendor/lib/libmedia_native.so
@@ -114,9 +108,6 @@ vendor/lib/libnetlink.so
 vendor/lib/libnetutils.so
 vendor/lib/libnfc_ndef.so
 vendor/lib/libntfs-3g.so
-vendor/lib/libOMX_Core.so
-vendor/lib/libomxvpu_enc.so
-vendor/lib/libomxvpu.so
 vendor/lib/libOpenMAXAL.so
 vendor/lib/libOpenSLES.so
 vendor/lib/libpagemap.so
@@ -131,11 +122,9 @@ vendor/lib/libppbox-armandroid-r4-gcc44-mt-1.0.0.so
 vendor/lib/libppbox_jni-armandroid-r4-gcc44-mt-1.0.0.so
 vendor/lib/libpplive_dmc_jni.so
 vendor/lib/libreference-ril.so
-vendor/lib/libril-rk29-dataonly.so
 vendor/lib/libril.so
 vendor/lib/librkffplayer.so
 vendor/lib/librk_on2.so
-vendor/lib/librkswscale.so
 vendor/lib/librkwmapro.so
 vendor/lib/librockchip_update_jni.so
 vendor/lib/libRSDriver.so
@@ -160,7 +149,6 @@ vendor/lib/libstagefright_avc_common.so
 vendor/lib/libstagefright_chromium_http.so
 vendor/lib/libstagefright_enc_common.so
 vendor/lib/libstagefright_foundation.so
-vendor/lib/libstagefrighthw.so
 vendor/lib/libstagefright_omx.so
 vendor/lib/libstagefright.so
 vendor/lib/libstagefright_soft_aacdec.so
@@ -192,7 +180,6 @@ vendor/lib/libthread_db.so
 vendor/lib/libttscompat.so
 vendor/lib/libttspico.so
 vendor/lib/libui.so
-vendor/lib/libUMP.so
 vendor/lib/libusbhost.so
 vendor/lib/libutils.so
 vendor/lib/libvariablespeed.so
@@ -205,7 +192,6 @@ vendor/lib/libvideohost_skype.so
 vendor/lib/libvinit.so
 vendor/lib/libvorbisencoder.so
 vendor/lib/libvorbisidec.so
-vendor/lib/libvpu.so
 vendor/lib/libwebcore.so
 vendor/lib/libwebrtc_audio_preprocessing.so
 vendor/lib/libwilhelm.so
@@ -214,9 +200,7 @@ vendor/lib/libwnndict.so
 vendor/lib/libWnnEngDic.so
 vendor/lib/libWnnJpnDic.so
 vendor/lib/libwpa_client.so
-vendor/lib/libyuvtorgb.so
 vendor/lib/libz.so
-vendor/lib/registry
 vendor/lib/webkit_ver
 
 # libDRM from FinlessROM
@@ -226,10 +210,6 @@ vendor/lib/drm/libfwdlockengine.so
 #
 
 vendor/lib/egl/egl.cfg
-vendor/lib/egl/libEGL_mali.so
-vendor/lib/egl/libGLES_android.so
-vendor/lib/egl/libGLESv1_CM_mali.so
-vendor/lib/egl/libGLESv2_mali.so
 
 # Files found in /etc/firmware
 
@@ -280,58 +260,30 @@ vendor/etc/firmware/sd8686_helper.bin
 vendor/etc/firmware/WIFI_RAM_CODE
 
 vendor/lib/hw/acoustics.default.so
-vendor/lib/hw/alsa.default.so
-vendor/lib/hw/audio.a2dp.default.so
 vendor/lib/hw/audio_policy.default.so
-vendor/lib/hw/audio_policy.rk30board.so
 vendor/lib/hw/audio.primary.default.so
-vendor/lib/hw/audio.primary.rk30board.so
 vendor/lib/hw/audio.r_submix.default.so
 vendor/lib/hw/bluetooth.default.so
 vendor/lib/hw/camera.goldfish.so
-vendor/lib/hw/camera.rk30board.so
 vendor/lib/hw/gps.goldfish.so
-vendor/lib/hw/gpu.rk30board.so
 vendor/lib/hw/gralloc.default.so
-vendor/lib/hw/gralloc.rk30board.so
-vendor/lib/hw/hwcomposer.rk30board.so
-vendor/lib/hw/keystore.default.so
 vendor/lib/hw/lights.goldfish.so
-vendor/lib/hw/lights.rk30board.so
 vendor/lib/hw/local_time.default.so
 vendor/lib/hw/power.default.so
-vendor/lib/hw/power.rk30xx.so
 vendor/lib/hw/sensors.goldfish.so
-vendor/lib/hw/sensors.rk30board.so
 
 vendor/lib/modules/8188eu.ko
 vendor/lib/modules/8188eu.ko.3.0.8+
 vendor/lib/modules/8192cu.ko
 vendor/lib/modules/8192cu.ko.3.0.8+
-vendor/lib/modules/mali.ko
-vendor/lib/modules/mali.ko.3.0.36+
-vendor/lib/modules/rk29-ipp.ko
-vendor/lib/modules/rk29-ipp.ko.3.0.36+
 vendor/lib/modules/rk30_mirroring.ko.3.0.36+
 vendor/lib/modules/rk30_mirroring.ko.3.0.8+
-vendor/lib/modules/rkwifi.ko
-vendor/lib/modules/rkwifi.ko.3.0.8+
 vendor/lib/modules/rt5370ap.ko
 vendor/lib/modules/rt5370ap.ko.3.0.8+
 vendor/lib/modules/rt5370sta.ko
 vendor/lib/modules/rt5370sta.ko.3.0.8+
-vendor/lib/modules/ump.ko
-vendor/lib/modules/ump.ko.3.0.36+
 vendor/lib/modules/vpu_service.ko
 vendor/lib/modules/vpu_service.ko.3.0.36+
-vendor/lib/modules/wlan.ko
-vendor/lib/modules/wlan.ko.3.0.8+
-
-vendor/lib/soundfx/libaudiopreprocessing.so
-vendor/lib/soundfx/libbundlewrapper.so
-vendor/lib/soundfx/libdownmix.so
-vendor/lib/soundfx/libreverbwrapper.so
-vendor/lib/soundfx/libvisualizer.so
 
 vendor/lib/ssl/engines/libkeystore.so
 
