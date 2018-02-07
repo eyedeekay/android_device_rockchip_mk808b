@@ -5,11 +5,11 @@ PRODUCT_RELEASE_NAME := MK808B
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Inherit device configuration
-$(call inherit-product, device/rockchip/mk808b/full_mk808b.mk)
-
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/lineage/config/common_mini_tv.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/rockchip/mk808b/full_mk808b.mk)
 
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
