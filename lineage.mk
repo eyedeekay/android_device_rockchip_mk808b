@@ -6,7 +6,7 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_mini_tv.mk)
+$(call inherit-product, vendor/lineage/config/common_mini_tv.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/rockchip/mk808b/full_mk808b.mk)
