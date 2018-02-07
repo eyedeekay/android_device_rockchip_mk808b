@@ -15,3 +15,6 @@
 #
 
 add_lunch_combo lineage_mk808b-userdebug
+add_lunch_combo lineage_mk808b-user
+add_lunch_combo aosp_mk808b-userdebug
+add_lunch_combo aosp_mk808b-user
