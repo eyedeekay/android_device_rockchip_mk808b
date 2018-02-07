@@ -27,19 +27,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.facelock.detect_cutoff=5000 \
     persist.facelock.recog_cutoff=5000
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    wifi.interface=wlan0 \
-    persist.sys.strictmode.visual=false \
-    ro.default.size=100 \
-    persist.ro.hardware=rk30board \
-    ro.product.manufacturer=Rockchip \
-    ro.product.model=mk808b
-#    ro.sf.fakerotation=true
-#    ro.sf.hwrotation=270
-
-# Debug
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    ro.debuggable=1
-
 $(call inherit-product-if-exists, vendor/rockchip/mk808b/mk808b-vendor.mk)
